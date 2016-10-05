@@ -34,14 +34,12 @@ test.cpp:5:31: error: no match for ‘operator=’ (operand types are
 ‘S2<
   int,
   S1<const double> 
->
-’ and ‘int’)
+>’ and ‘int’)
    
 S2<
   int,
   S1<const double> 
->
-()=1;
+>()=1;
                                ^
 test.cpp:2:31: note: candidate: 
 S2<
@@ -55,19 +53,16 @@ S2<
 <
   int,
   S1<const double> 
->
-&)
+>&)
  
 template<
   class,
   class
->
- struct S2 {};
+> struct S2 {};
                                ^
 test.cpp:2:31: note:   no known conversion for argument 1 from ‘int’ to ‘const 
 S2<
   int,
   S1<const double> 
->
-&’
+>&’
 ```

@@ -17,7 +17,7 @@ int main()
       std::cout << line << "\n";
       continue;
     }
-    
+
     auto next_pos2 = line.find_last_of(' ', next_pos);
     if (next_pos2 != npos) {
       ++next_pos2;
@@ -71,17 +71,23 @@ int main()
             write(pos, next_pos);
           }
           --depth;
-          std::cout << std::setw(depth * 2 + 1) << ">";
+          std::cout << std::setw(depth * 2) << "";
           next_pos2 = line.find_first_of("<,>", next_pos + 1);
           if (next_pos2 != npos) {
             next_pos2 -= (line[next_pos2] != ',');
-            std::cout.write(&line[next_pos + 1], next_pos2 - next_pos);
+            std::cout << ">";
+            write(next_pos + 1, next_pos2 + 1);
             next_pos = next_pos2;
           }
-          std::cout << "\n";
+          else {
+            write(next_pos, line.size());
+            pos = line.size();
+            next_pos = npos;
+            continue;
+          }
           break;
       }
-      
+
       pos = next_pos + 1;
       next_pos = line.find_first_of("<,>", pos);
     }
